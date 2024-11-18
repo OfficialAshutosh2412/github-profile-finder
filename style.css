@@ -4,6 +4,11 @@
   box-sizing: border-box;
   font-family: "Gilroy", sans-serif;
 }
+:root {
+  --body-bg: #0d1117;
+  --section-bg: #010409;
+  --button-bg: #1f6feb;
+}
 body {
   display: flex;
   flex-direction: column;
@@ -12,19 +17,32 @@ body {
   height: 100vh;
   width: 100%;
   gap: 10px;
-  background: #11111a;
+  background: var(--body-bg);
   position: relative;
 }
-
+.error {
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  font-weight: lighter;
+}
+.error i {
+  color: rgb(212, 71, 71);
+}
+.empty i {
+  color: rgb(200, 153, 0);
+}
 section {
   width: 350px;
   height: 75vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 10px;
   border-radius: 25px;
   overflow: hidden;
+  background: var(--section-bg);
+  text-align: center;
 }
 .left {
   width: 100%;
@@ -34,7 +52,7 @@ section {
   flex-direction: column;
   gap: 10px;
   height: 100%;
-  background: #33284efe;
+
   color: rgb(238, 238, 238);
 }
 .left img {
@@ -71,9 +89,11 @@ section {
   color: white;
 }
 
-.left > button {
+.left > a {
+  text-decoration: none;
+  color: white;
   margin-top: 10px;
-  background: #6245ad;
+  background: var(--button-bg);
   font-size: 0.7rem;
   font-weight: bold;
   letter-spacing: 2px;
@@ -82,9 +102,6 @@ section {
   border-radius: 25px;
 }
 .inputs {
-  /* position: fixed;
-  top: 20px;
-  left: 10px; */
   width: 340px;
 }
 .inputs div {
@@ -97,8 +114,8 @@ section {
   height: 40px;
   border-radius: 25px 0px 0px 25px;
   padding: 10px;
-  background: #33284e;
-  color: white;
+  background: var(--section-bg);
+  color: rgb(182, 182, 182);
   font-size: 0.9rem;
   outline: none;
   width: 100%;
@@ -111,9 +128,31 @@ section {
   width: 50px;
   border-radius: 0px 25px 25px 0px;
   padding: 10px;
-  background: #6245ad;
+  background: var(--button-bg);
   color: rgb(221, 221, 221);
   cursor: pointer;
+}
+.loader {
+  width: 48px;
+  height: 48px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  animation: skLinRotate 1s ease-in-out infinite alternate;
+}
+.loader:after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  border-top-color: #ff3d00;
+}
+@keyframes skLinRotate {
+  95%,
+  100% {
+    transform: rotate(840deg);
+  }
 }
 @media screen and (max-width: 480px) {
   body {
